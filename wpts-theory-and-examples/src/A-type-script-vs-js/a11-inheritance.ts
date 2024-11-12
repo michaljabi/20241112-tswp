@@ -20,11 +20,27 @@
 class Animal {
 
     name: string;
+    age = 20;
+
+    constructor(name: string = '...') {
+        this.name = name;
+    }
+
+}
+
+class Cat {
+
+    name: string;
+    //age = 20;
 
     constructor(name: string) {
         this.name = name;
     }
 }
+
+// const myCat: Cat = new Animal('Puszek');
+// myCat
+
 
 // Prosty przykład dziedziczenia:
 class Mammal extends Animal {
