@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "echo": "echo Hello wold",
+    "list": "dir"
   },
   "keywords": [],
   "author": "",
