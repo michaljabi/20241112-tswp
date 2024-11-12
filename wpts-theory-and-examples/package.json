@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc",
     "echo": "echo Hello wold",
-    "list": "dir"
+    "list": "dir",
+    "run:a00": "tsx src/A-type-script-vs-js/a00-ts-must-be-js-by-the-end-of-the-day.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "typescript": "^5.1.6"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.197"
+    "@types/lodash": "^4.14.197",
+    "tsx": "^4.19.2"
   }
 }
