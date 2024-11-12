@@ -4,15 +4,17 @@
   "description": "Załączony plik [index.html](./index.html) zwiera _Landing page_ z formularzem do oceny firmy _ACME_.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch",
-    "dev": "live-server ./"
+    "old-build": "tsc",
+    "old-build:watch": "tsc --watch",
+    "dev": "vite",
+    "build": "vite build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "live-server": "^1.2.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
   }
 }

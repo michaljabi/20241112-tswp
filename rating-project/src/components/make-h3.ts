@@ -5,7 +5,7 @@ export function makeH3(title: string): HTMLHeadingElement {
 
     //
     h3Rate.addEventListener('click', () => {
-        h3Rate.textContent += '!'
+        h3Rate.textContent += '??!'
     })
 
     return h3Rate;
