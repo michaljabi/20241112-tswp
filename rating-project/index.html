@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rating Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --bg-dark: rgb(24, 49, 83);
+            --color-gold: #edd02e;
+            --color-white: #fff;
+        }
+
+        .has-background-navy-dark {
+            color: var(--color-white);
+            background-color: var(--bg-dark);
+        }
+    </style>
+</head>
+
+<body class="has-background-navy-dark">
+    <div class="columns is-multiline">
+        <div class="column is-full">
+            <section class="hero is-info">
+                <div class="hero-body">
+                    <p class="title">
+                        ACME inc.
+                    </p>
+                    <p class="subtitle is-italic">
+                        A Company that just Makes Everything...
+                    </p>
+                </div>
+            </section>
+        </div>
+        <div class="column is-offset-1 is-10 p-6 is-offset-3-widescreen is-6-widescreen">
+            <h3 class="title has-text-light is-3">Rate our company</h3>
+            <section class="box" style="border: 1px solid #ccc; border-radius: 1em;">
+                <form>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label for="email" class="label">e-mail*:</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <input id="email" class="input" type="email" placeholder="your @ address">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label for="rate" class="label">rate*:</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control is-flex">
+                                    <div class="p-2 px-4 has-text-weight-bold">4</div>
+                                    <input id="rate" class="input" type="range" min="1" max="5" value="4">
+                                </div>
+                                <!--
+                                <div class="p-2">
+                                    <i class="fa-solid fa-star" style="color: var(--color-gold);"></i>
+                                    <i class="fa-solid fa-star" style="color: var(--color-gold);"></i>
+                                    <i class="fa-solid fa-star" style="color: var(--color-gold);"></i>
+                                    <i class="fa-solid fa-star" style="color: var(--color-gold);"></i>
+                                    <i class="fa-regular fa-star" style="color: var(--color-gold);"></i>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label for="opinion" class="label">opinion:</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <textarea id="opinion" class="textarea"
+                                        placeholder="...something more about your feelings"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="is-flex is-justify-content-end">
+                        <div class="control">
+                            <button class="button is-link" type="submit">Send my testimonial</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

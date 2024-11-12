@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>Functional programming example</title>
+</head>
+<body>
+    <section class="container mt-6 pt-5" >
+        <form>
+            <div class="field">
+                <label class="label" for="fruit">Choose fruit</label>
+                <div class="control">
+                    <div class="select">
+                        <select id="fruit"></select>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!--
+        Podejście z programowania funkcyjnego przyda nam się tam, gdzie chcemy przekształcić np.
+        kolekcje danych na renderowane elementy DOM
+
+    -->
+
+    <script>
+        const dataCollection = ['apple', 'banana', 'mango', 'cherry', 'lime'];
+        const mappedDOMOptions = dataCollection.map(makeOption);
+        const $fruitSelect = document.querySelector('#fruit');
+        $fruitSelect.append(...mappedDOMOptions)
+
+        function makeOption(fruit) {
+            const option = document.createElement('option');
+            option.value = fruit;
+            option.textContent = fruit;
+            return option;
+        }
+    </script>
+</body>
+</html>
