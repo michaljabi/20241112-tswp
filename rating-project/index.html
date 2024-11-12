@@ -112,6 +112,7 @@
 
         const formWrapper = document.querySelector('[data-form-wrapper]');
 
+        const titles = ['This', 'is', 'my', 'example']
 
         function makeH3(title = 'Rate our company') {
             const h3Rate = document.createElement('h3');
@@ -126,7 +127,33 @@
             return h3Rate;
         }
 
-        formWrapper.prepend(makeH3(), makeH3(), makeH3('TEST'), makeH3(), makeH3())
+        // solution 1:
+        // for(const title of titles.toReversed()) {
+        //     formWrapper.prepend(makeH3(title))
+        // }
+
+        //console.log(titles)
+        // solution 2: functional programming
+
+        // 1. ['This', 'is', 'my', 'example', null]
+        // 2. map(makeH3)
+        // 3. [makeH3('This'), makeH3('is'), makeH3('my'), makeH3('example')]
+        // 4. formWrapper.prepend(...[makeH3('This'), makeH3('is'), makeH3('my'), makeH3('example')])
+        const titlesAsH3s = titles.filter(startsWithLowerCase).map(makeH3) // === titles.map((title) => makeH3(title))
+        console.log(titlesAsH3s)
+
+
+        formWrapper.prepend(...titlesAsH3s)
+        // formWrapper.prepend(makeH3('This'), makeH3('is'))
+
+        // pure function
+        // 1. same input / same output
+        // 2. no side effects
+        // 3. single responsibility
+        // (predykat akurat => predykat = funkcja która dla danych zwraca true/false)
+        function startsWithLowerCase(word = '') {
+            return word.charAt(0) === word.charAt(0).toLowerCase();
+        }
     </script>
 </body>
 

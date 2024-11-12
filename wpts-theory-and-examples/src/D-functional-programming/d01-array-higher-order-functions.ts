@@ -59,13 +59,16 @@ console.log(averageAge);
 // Dzięki takiemu podejściu możemy przykład powyżej przedstawić w następujący zrefaktoryzowany sposób:
 
 // oto nasze pure functions:
-const isItPerson = (user: Person) => user.professionId === 3;
-const getAge = (user: Person) => user.age;
-const sum = (a: number, b: number) => a + b;
+export const isItPerson = (user: Person) => user.professionId === 3;
+export const getAge = (user: Person) => user.age;
+export const sum = (a: number, b: number) => a + b;
 
 const allITPerson2 = users.filter(isItPerson);
 const averageAge2 = allITPerson2.map(getAge).reduce(sum, 0) / allITPerson2.length;
 
 console.log(averageAge2);
+
+
+console.log(sum(90, 28))
 
 export {};
