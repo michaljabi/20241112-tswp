@@ -28,3 +28,5 @@ function carFactory (manufacturer: string, model: string, isVip = false) {
 	return makeCar;
 }
 
+console.log(carFactory('Mercedes', 'S'))
+console.log(carFactory('Mercedes', 'S', true))
