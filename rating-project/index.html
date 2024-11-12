@@ -36,8 +36,8 @@
                 </div>
             </section>
         </div>
-        <div class="column is-offset-1 is-10 p-6 is-offset-3-widescreen is-6-widescreen">
-            <h3 class="title has-text-light is-3">Rate our company</h3>
+        <div class="column is-offset-1 is-10 p-6 is-offset-3-widescreen is-6-widescreen" data-form-wrapper>
+<!--            <h3 class="title has-text-light is-3">Rate our company</h3>-->
             <section class="box" style="border: 1px solid #ccc; border-radius: 1em;">
                 <form>
                     <div class="field is-horizontal">
@@ -99,6 +99,20 @@
     <script>
         const subtitle = document.querySelector('[data-subtitle]');
         subtitle.textContent = 'A Company that just Makes Everything...'
+
+        const h3Rate = document.createElement('h3');
+        h3Rate.className = 'title has-text-light is-3'
+        h3Rate.textContent = 'Rate our company';
+        console.dir(h3Rate)
+        console.log(h3Rate.constructor.name)
+
+
+        console.log(h3Rate instanceof HTMLHeadingElement)
+        console.log(h3Rate instanceof HTMLElement)
+
+        const formWrapper = document.querySelector('[data-form-wrapper]');
+
+        formWrapper.prepend(h3Rate)
     </script>
 </body>
 
