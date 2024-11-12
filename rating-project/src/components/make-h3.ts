@@ -1,4 +1,4 @@
-export function makeH3(title = 'Rate our company') {
+export function makeH3(title: string): HTMLHeadingElement {
     const h3Rate = document.createElement('h3');
     h3Rate.className = 'title has-text-light is-3'
     h3Rate.textContent = title;

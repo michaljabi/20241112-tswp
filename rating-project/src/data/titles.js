@@ -1,1 +1,0 @@
-export const titles = ['This', 'is', 'my', 'example']
