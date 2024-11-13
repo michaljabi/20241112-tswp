@@ -2,6 +2,7 @@ import { makeH3 } from './components/make-h3.js'
 import { titles } from "./data/titles.js";
 import { startsWithLowerCase } from "./utils/starts-wit-lower-case.js";
 import { Hero } from "./components/hero.component";
+import {RatingFormComponent} from "./components/rating-form.component";
 // to be continued... (add css).
 
 const $subtitle = document.querySelector('[data-subtitle]');
@@ -37,7 +38,7 @@ const titlesAsH3s = titles.filter(startsWithLowerCase).map(makeH3) // === titles
 console.log(titlesAsH3s)
 
 
-$formWrapper?.prepend(...titlesAsH3s)
+$formWrapper?.append(...titlesAsH3s, RatingFormComponent())
 // formWrapper.prepend(makeH3('This'), makeH3('is'))
 
 const $dataColumn = document.querySelector('[data-column]');
