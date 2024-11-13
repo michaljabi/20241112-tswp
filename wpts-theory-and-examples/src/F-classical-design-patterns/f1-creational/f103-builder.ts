@@ -40,3 +40,4 @@ function kidsPartyBuilder(name: string, guests: string[]) {
 	kidsParty.guests = guests;
 	return kidsParty;
 }
+

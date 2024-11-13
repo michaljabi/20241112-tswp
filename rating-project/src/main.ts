@@ -1,10 +1,12 @@
 import { makeH3 } from './components/make-h3.js'
 import { titles } from "./data/titles.js";
 import { startsWithLowerCase } from "./utils/starts-wit-lower-case.js";
+import { Hero } from "./components/hero.component";
+// to be continued... (add css).
 
-const subtitle = document.querySelector('[data-subtitle]');
-if(subtitle) {
-   subtitle.textContent = 'A Company that just Makes Everything...'
+const $subtitle = document.querySelector('[data-subtitle]');
+if($subtitle) {
+   $subtitle.textContent = 'A Company that just Makes Everything...'
 }
 
 const h3Rate = document.createElement('h3');
@@ -17,7 +19,7 @@ console.log(h3Rate.constructor.name)
 console.log(h3Rate instanceof HTMLHeadingElement)
 console.log(h3Rate instanceof HTMLElement)
 
-const formWrapper = document.querySelector('[data-form-wrapper]');
+const $formWrapper = document.querySelector('[data-form-wrapper]');
 
 // solution 1:
 // for(const title of titles.toReversed()) {
@@ -35,6 +37,10 @@ const titlesAsH3s = titles.filter(startsWithLowerCase).map(makeH3) // === titles
 console.log(titlesAsH3s)
 
 
-formWrapper?.prepend(...titlesAsH3s)
+$formWrapper?.prepend(...titlesAsH3s)
 // formWrapper.prepend(makeH3('This'), makeH3('is'))
 
+const $dataColumn = document.querySelector('[data-column]');
+
+$dataColumn?.append(Hero({title: 'ACME inc.', subtitle: 'A Company that just Makes Everything...'}))
+$dataColumn?.append(Hero({title: 'xACME inc.', subtitle: '----'}))

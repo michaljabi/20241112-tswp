@@ -6,7 +6,7 @@
   "scripts": {
     "old-build": "tsc",
     "old-build:watch": "tsc --watch",
-    "dev": "vite",
+    "dev": "vite --open --port 8088",
     "build": "vite build"
   },
   "keywords": [],
