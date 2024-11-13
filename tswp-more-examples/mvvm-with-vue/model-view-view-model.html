@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>V-model 2way data bind</title>
+    <style>
+        body {
+            font-family: Calibri, sans-serif;
+            padding: 3em;
+        }
+
+        h1,
+        h2 {
+            border-bottom: 3px solid #55b780;
+        }
+
+        h2 {
+            border-width: 1px;
+            padding-left: 10px;
+            color: #38495f;
+        }
+
+        [v-cloak] {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+         W frameworku Vue wszystkie elementy opakowane w ref() lub reactive() oraz pozostałe "Composition API"
+         są "z automatu" reaktywne i obserwowane. Dzięki czemu mamy tutaj bindowanie Model - View - View - Model
+         "out of the box". Cokolwiek aktualizowane jest na widoku, będzie aktualizowane w modelu, co z kolei zostanie
+         zaktualizowane poprzez model, będzie aktualizowane na widoku.
+    -->
+    <main id="app">
+        <section>
+            <h2>VIEW: </h2>
+            <form>
+                <label>
+                    Wpisz coś:
+                    <!-- https://vuejs.org/api/built-in-directives.html#v-model -->
+                    <input v-model="task.title">
+                </label>
+                <p>
+                    TASK: {{task}}
+                </p>
+                <label>
+                    2 way data binding:
+                    <input v-model="task.title">
+                </label>
+            </form>
+        </section>
+    </main>
+    <script type="module">
+        import { createApp, reactive } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.esm-browser.min.js';
+
+        // MODEL:
+        const myTask = { id: 1, title: 'Clean the Code' }
+
+        const reactiveTask = reactive(myTask);
+
+        // MODEL-VIEW (bind):
+        const app = createApp({
+            setup() {
+                return {
+                    task: reactiveTask
+                }
+            }
+        })
+        app.mount('#app')
+
+
+        setTimeout(() => {
+            reactiveTask.title = '!!!'
+        }, 3000)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "auction-portal-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "start": "env-cmd nodemon --exec babel-node src/server.js",
+    "start-production": "env-cmd node dist/server.js",
+    "migrate:dev": "knex migrate:latest --env development",
+    "migrate:dev-rollback": "knex migrate:rollback --all",
+    "seed:dev": "knex seed:run --env development"
+  },
+  "author": "Jabi",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^2.1.0",
+    "objection": "^3.0.1",
+    "sqlite3": "^5.0.8"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.2",
+    "@babel/node": "^7.17.10",
+    "@babel/preset-env": "^7.18.2",
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.16"
+  }
+}

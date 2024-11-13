@@ -1,0 +1,16 @@
+:root {
+    --bg-dark: rgb(24, 49, 83);
+    --color-gold: #edd02e;
+    --color-white: #fff;
+    overflow: hidden;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.has-background-navy-dark {
+    color:  var(--color-white);
+    background-color: var(--bg-dark);
+}

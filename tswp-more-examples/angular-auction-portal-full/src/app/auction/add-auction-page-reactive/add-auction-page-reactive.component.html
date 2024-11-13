@@ -1,0 +1,49 @@
+<h2>Dodaj nową Aukcje Reaktywnie</h2>
+<section fxLayout.xs="column" fxLayout.sm="column" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em">
+  <div fxFlex>
+    <img
+      style="width: 100%"
+      alt="Podgląd fotografii"
+      [src]="imagePreview"
+    />
+  </div>
+  <div fxFlex>
+    <form [formGroup]="auctionForm" (ngSubmit)="handleFormSubmit()" >
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Nazwa aukcji</mat-label>
+        <input matInput name="title" formControlName="title">
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-error>{{titleErrors}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Cena aukcji</mat-label>
+        <input matInput type="number" formControlName="price">
+        <mat-icon matSuffix>sell</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Zdjęcie</mat-label>
+        <input matInput type="number"
+               name="imgUrl"
+               formControlName="imgUrl"
+               required>
+        <mat-icon matSuffix>image</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Szczegółowy opis</mat-label>
+        <textarea
+          matInput
+          rows="5"
+          class="form-control"
+          name="description"
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+      <div class="text-right">
+        <button mat-raised-button class="mat-primary" [class.btn-disabled]="auctionForm.invalid" type="submit">
+          <mat-icon>gavel</mat-icon> Dodaj aukcję
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+

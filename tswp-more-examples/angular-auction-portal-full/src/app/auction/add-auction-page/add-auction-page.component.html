@@ -1,0 +1,53 @@
+<h2>Dodaj nową Aukcje</h2>
+<section fxLayout.xs="column" fxLayout.sm="column" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em">
+  <div fxFlex>
+    <img
+      style="width: 100%"
+      alt="Podgląd fotografii"
+      [src]="'https://picsum.photos/id/'  + imgId + '/600/600'"
+    />
+  </div>
+  <div fxFlex>
+    <form #auctionForm="ngForm" (ngSubmit)="handleFormSubmit(auctionForm)" >
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Nazwa aukcji</mat-label>
+        <input matInput name="title" required  #myTitle="ngModel" ngModel minlength="2">
+        <fa-icon icon="edit" matSuffix></fa-icon>
+        <mat-error *ngIf="myTitle.touched && myTitle.errors">
+          <div *ngIf="myTitle.errors.required">Tytuł jest wymagany</div>
+          <div *ngIf="myTitle.errors.minlength">Tytuł powinien mieć min. {{myTitle.errors.minlength.requiredLength}} znaków</div>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Cena aukcji</mat-label>
+        <input matInput name="price" ngModel required>
+        <fa-icon icon="tag" matSuffix></fa-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Zdjęcie</mat-label>
+        <input matInput type="number"
+               name="imgUrl"
+               ngModel
+               [(ngModel)]="imgId"
+               required>
+        <fa-icon icon="image" matSuffix></fa-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Szczegółowy opis</mat-label>
+        <textarea
+          matInput
+          rows="5"
+          class="form-control"
+          name="description"
+          ngModel
+        ></textarea>
+      </mat-form-field>
+      <div class="text-right">
+        <button mat-raised-button class="mat-primary" [class.btn-disabled]="auctionForm.invalid" type="submit">
+          <fa-icon icon="gavel"></fa-icon> Dodaj aukcję
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+

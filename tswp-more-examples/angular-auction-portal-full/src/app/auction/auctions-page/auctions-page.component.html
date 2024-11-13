@@ -1,0 +1,17 @@
+
+<h2>Lista naszych aukcji</h2>
+<section class="row">
+  <div class="col-12">
+    <div class="alert alert-info" *ngIf="isLoading">
+      Ładuję aukcje....
+    </div>
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      Wystąpił błąd ładowania: {{errorMessage}}
+    </div>
+  </div>
+  <mat-grid-list [cols]="matColumns" rowHeight="1:1.4" >
+    <mat-grid-tile *ngFor="let auc of auctions">
+      <app-auction-card [auction]="auc" (addToCart)="handleAddToCart($event)"></app-auction-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</section>

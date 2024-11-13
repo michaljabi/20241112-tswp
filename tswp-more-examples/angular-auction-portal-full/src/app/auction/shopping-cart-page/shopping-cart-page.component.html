@@ -1,0 +1,6 @@
+<h2> Koszyk </h2>
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let item of item$ | async">
+    {{ item | json }}
+  </mat-list-item>
+</mat-list>
