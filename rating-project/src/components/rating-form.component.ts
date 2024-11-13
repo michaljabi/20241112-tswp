@@ -7,22 +7,58 @@ import {
     section,
     textArea,
     withAttributes
-} from "../builders/dom-builders";
+} from "../builders/dom-builders.js";
 import { FormField } from "./form-field.component";
+import { Subject, BehaviorSubject } from "rxjs";
+
+class RateFormState {
+    private formState$ = new BehaviorSubject({ email: '', rate: 2, opinion: ''});
+
+
+    getState() {
+        return this.formState$.asObservable();
+    }
+
+    setEmail(email: string) {
+        const myState = this.formState$.getValue();
+        this.formState$.next({ ...myState, email })
+    }
+}
 
 export function RatingFormComponent() {
 
-    const myRate = 2;
+    // const myRate = 2;
+    const myRate$ = new BehaviorSubject(2);
+
     const $div = div('p-2 px-4 has-text-weight-bold', String(4));
-    $div.textContent = String(myRate);
     const $range =  inputRange('rate', {min: 1, max: 5, value: 4});
-    $range.value = String(myRate);
-    document.title = `Rating Form (${myRate})`
+
     $range.addEventListener('input', (e) => {
         if(e.target instanceof HTMLInputElement) {
             console.log(e.target?.value);
+            // PROVIDER:
+            myRate$.next(Number(e.target?.value))
         }
     })
+
+    // Angular [(ngModel)]="" (2-way data binding) mvvm
+    // CONSUMERS:
+    // #1:
+    myRate$.subscribe((v: number) => {
+        document.title = `Rating Form (${v})`
+    })
+    // #2:
+    myRate$.subscribe((myRate) => {
+        $div.textContent = String(myRate);
+    })
+    // #3:
+    myRate$.subscribe((myRate) => {
+        $range.value = String(myRate);
+    })
+
+    setTimeout(() => {
+        myRate$.next(1)
+    }, 5000)
 
     return withAttributes(section('box',
         form('', [

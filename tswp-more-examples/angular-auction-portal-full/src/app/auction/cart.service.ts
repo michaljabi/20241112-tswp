@@ -16,12 +16,15 @@ export class CartService {
   }
 
   addItem(auction: AuctionItem): void {
-    const auctions = this.cartItemSubject.getValue();
+    const auctions: AuctionItem[] = this.cartItemSubject.getValue();
     auctions.push(auction);
     this.cartItemSubject.next(auctions);
   }
 
+  // cartService.getAll().next() // zabrane - bo nie chcemy żeby było możliwe!!!
   getAll(): Observable<AuctionItem[]> {
+    // this.cartItemSubject.next() // to działą
+    // this.cartItemSubject.asObservable().next() // to nie działa
     return this.cartItemSubject.asObservable();
   }
 
@@ -34,23 +37,27 @@ export class CartService {
   }
 }
 
-/*
 
-import { Injectable } from '@angular/core';
-import { AuctionItem } from './auction-item';
+interface CartItem {
+  count: number;
+  id: number;
+  auction: AuctionItem
+}
 
-@Injectable({
-  providedIn: 'root'
-})
-export class CartService {
+export class CartService2 {
 
-  private cartItems: AuctionItem[] = [];
+  private cartItems: CartItem[] = [];
 
   addItem(auction: AuctionItem): void {
-    this.cartItems.push(auction);
+    const ref = this.cartItems.find(i => i.id === auction.id);
+    if(ref) {
+      ref.count++;
+    } else {
+      this.cartItems.push({count: 1, id: auction.id, auction});
+    }
   }
 
-  getAll(): AuctionItem[] {
+  getAll(): readonly CartItem[] {
     return this.cartItems;
   }
 
@@ -59,5 +66,6 @@ export class CartService {
   }
 }
 
+const cartService = new CartService2();
 
-*/
+// cartService.getAll().push() // zabrane - bo nie chcemy żeby było możliwe!!!
