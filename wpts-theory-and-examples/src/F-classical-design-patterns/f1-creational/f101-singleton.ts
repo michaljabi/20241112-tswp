@@ -38,6 +38,8 @@ class IceTruckService {
 	}
 }
 
+// export const iceTruckService3 = new IceTruckService('');
+
 const iceTruckService1 = new IceTruckService('My Ice Truck Service');
 const iceTruckService2 = new IceTruckService('My Ice Truck Service 2');
 // tak naprawdę to ta sama instancja obiektu:

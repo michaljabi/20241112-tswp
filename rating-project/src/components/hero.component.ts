@@ -13,34 +13,26 @@
 
 * */
 
-// dom-creators
-const section = (classNames = '', elements: (string | HTMLElement)[] = []) => {
-    const node = document.createElement('section');
-    node.className = classNames;
-    node.append(...elements);
-    return node;
-}
-const div = (classNames = '', elements: (string | HTMLElement)[] = []) => {
-    const node = document.createElement('div');
-    node.className = classNames;
-    node.append(...elements);
-    return node;
-}
-const p = (classNames = '', elements: (string | HTMLElement)[] = []) => {
-    const node = document.createElement('p');
-    node.className = classNames;
-    node.append(...elements);
-    return node;
-}
+
 
 // Builder
+import {section, div, p} from "../builders/dom-builders";
+
 export function Hero({ title, subtitle } : {title: string, subtitle: string}) {
     // const { title, subtitle } = props;
+    const $title = p('title', [title]);
+
+    $title.addEventListener('click', () => {
+        $title.textContent +='!'
+    })
+
+    $title.setAttribute('title', 'hello from title...')
+    $title.setAttribute('data-subtitle', '')
 
     // Factory functions -> nowe DOM elementy
     return section('hero is-info', [
         div('hero-body', [
-            p('title', [title]),
+            $title,
             p('subtitle is-italic', [subtitle])
         ])
     ])

@@ -33,6 +33,9 @@ function bachelorPartyBuilder(name: string, guests: string[]) {
 	return bachelorParty;
 }
 
+const party = bachelorPartyBuilder('123', []);
+party.attractions = party.attractions.filter(a => a !== 'paintball');
+
 function kidsPartyBuilder(name: string, guests: string[]) {
 	const attractions = ['piniata', 'popcorn', 'swimming-pool'];
 	const kidsParty = new Party(name);
