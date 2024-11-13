@@ -1,4 +1,4 @@
-import { Subject } from "rxjs";
+import { Subject, interval } from "rxjs";
 
 /**
  * Wzorzec: Observer | Obserwator
@@ -34,6 +34,17 @@ import { Subject } from "rxjs";
 
  */
 
+// const cold$ = interval(2000);
+//
+// cold$.subscribe((n) => {
+// 	console.log('#1 cold', n)
+// })
+//
+// setTimeout(() => {
+// 	cold$.subscribe((n) => {
+// 		console.log('#2 cold', n)
+// 	})
+// }, 5000)
 
 // UWAGA : zadanie wymaga użycia biblioteki Rx.js
 
@@ -51,10 +62,16 @@ function firstComponent(ev$: Subject<Car>) {
 
 function secondComponent(ev$: Subject<Car>) {
 	//tutaj
+	ev$.subscribe((car: Car) => {
+		console.log(`Hello second ${car.name}`)
+	})
 }
 
 function thirdComponent(ev$: Subject<Car>) {
 	//tutaj
+	ev$.subscribe((car: Car) => {
+		console.log(`Hello third ${car.name}`)
+	})
 }
 
 (function mainBroadcaster() {
