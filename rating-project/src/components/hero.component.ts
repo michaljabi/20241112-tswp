@@ -22,7 +22,7 @@ const pWithAttributes = (classNames = '', elements: (string | HTMLElement)[] = [
 
 export function Hero({ title, subtitle } : {title: string, subtitle: string}) {
     // const { title, subtitle } = props;
-    const $title = p('title', [title]);
+    const $title = p('title', title);
 
     $title.addEventListener('click', () => {
         $title.textContent +='!'
@@ -37,8 +37,9 @@ export function Hero({ title, subtitle } : {title: string, subtitle: string}) {
     return section('hero is-info', [
         div('hero-body', [
             $titleWithAttr,
-            withAttributes(p('subtitle is-italic', [subtitle]), { title: 'hello from decorator'}),
-            pWithAttributes('', [], {})
+            withAttributes(p('subtitle is-italic', subtitle), { title: 'hello from decorator'}),
+            ///pWithAttributes('', [], {}),
+            //p(['hero', 'is-info'], 'hello?')
         ])
     ])
 }

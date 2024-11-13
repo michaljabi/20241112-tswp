@@ -22,11 +22,22 @@ type Money = number | string;
 
 const user: User2 = {}
 
+type DOMElementRefs = string | HTMLElement | (string | HTMLElement)[];
+type ClassList =  string | string[];
+
 // Factory function
-function createElement<K extends keyof HTMLElementTagNameMap>(elementName: K, classNames = '', elements: (string | HTMLElement)[] = [] /*attributes...*/ ): HTMLElementTagNameMap[K] {
+function createElement<K extends keyof HTMLElementTagNameMap>(elementName: K, classNames: ClassList = '', elements: DOMElementRefs = [] /*attributes...*/ ): HTMLElementTagNameMap[K] {
     const node = document.createElement(elementName);
-    node.className = classNames;
-    node.append(...elements);
+    if(typeof classNames  === 'string') {
+        node.className = classNames;
+    } else {
+        node.className = classNames.join(' ')
+    }
+    if(Array.isArray(elements)) {
+        node.append(...elements);
+    } else {
+        node.append( elements )
+    }
     return node;
 }
 
@@ -38,9 +49,9 @@ const table : string[]  = [];
 // table.at(-1)
 
 // dom-creators
-export const section = (classNames = '', elements: (string | HTMLElement)[] = []) => createElement('section', classNames, elements)
-export const div = (classNames = '', elements: (string | HTMLElement)[] = []) => createElement('div', classNames, elements)
-export const p = (classNames = '', elements: (string | HTMLElement)[] = []) => createElement('p', classNames, elements)
+export const section = (classNames?: ClassList, elements?: DOMElementRefs) => createElement('section', classNames, elements)
+export const div = (classNames?: ClassList, elements?: DOMElementRefs) => createElement('div', classNames, elements)
+export const p = (classNames?: ClassList, elements?: DOMElementRefs) => createElement('p', classNames, elements)
 
 // Dekorator
 export function withAttributes<E extends HTMLElement>(ref: E, attributes: { [key: string]: string | number | boolean }): E {
