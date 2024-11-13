@@ -41,3 +41,13 @@ const table : string[]  = [];
 export const section = (classNames = '', elements: (string | HTMLElement)[] = []) => createElement('section', classNames, elements)
 export const div = (classNames = '', elements: (string | HTMLElement)[] = []) => createElement('div', classNames, elements)
 export const p = (classNames = '', elements: (string | HTMLElement)[] = []) => createElement('p', classNames, elements)
+
+// Dekorator
+export function withAttributes<E extends HTMLElement>(ref: E, attributes: { [key: string]: string | number | boolean }): E {
+    for(const [key, value] of Object.entries(attributes)) {
+        if(value !== false) {
+            ref.setAttribute(key, String(value))
+        }
+    }
+    return ref;
+}

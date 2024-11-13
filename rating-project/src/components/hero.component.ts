@@ -16,7 +16,9 @@
 
 
 // Builder
-import {section, div, p} from "../builders/dom-builders";
+import {section, div, p, withAttributes} from "../builders/dom-builders";
+
+const pWithAttributes = (classNames = '', elements: (string | HTMLElement)[] = [], attr: { [key: string]: string | number | boolean }) => withAttributes(p(classNames, elements), attr)
 
 export function Hero({ title, subtitle } : {title: string, subtitle: string}) {
     // const { title, subtitle } = props;
@@ -26,14 +28,17 @@ export function Hero({ title, subtitle } : {title: string, subtitle: string}) {
         $title.textContent +='!'
     })
 
-    $title.setAttribute('title', 'hello from title...')
-    $title.setAttribute('data-subtitle', '')
+    // $title.setAttribute('title', 'hello from title...')
+    // $title.setAttribute('data-subtitle', '')
+
+    const $titleWithAttr = withAttributes($title, { title: 'hello from title...', 'data-xyz': true })
 
     // Factory functions -> nowe DOM elementy
     return section('hero is-info', [
         div('hero-body', [
-            $title,
-            p('subtitle is-italic', [subtitle])
+            $titleWithAttr,
+            withAttributes(p('subtitle is-italic', [subtitle]), { title: 'hello from decorator'}),
+            pWithAttributes('', [], {})
         ])
     ])
 }
