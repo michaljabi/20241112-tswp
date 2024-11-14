@@ -23,6 +23,7 @@ function *clubMembers() {
 	yield 'Merry';
 	yield 'Stan';
 	yield 'George';
+	return 'Johnny...'
 }
 /// ---------------------------------
 
@@ -31,6 +32,13 @@ const iterateMembers = clubMembers();
 console.log(iterateMembers.next())
 console.log(iterateMembers.next())
 console.log(iterateMembers.next())
+console.log(iterateMembers.next())
+console.log(iterateMembers.next())
+
+console.log(clubMembers().next())
+console.log(clubMembers().next())
+console.log(clubMembers().next())
+console.log(clubMembers().next())
 
 /// ---------------------------------
 function *familyMembers() {
@@ -55,3 +63,39 @@ const iterateVip = vipMembers();
 
 console.log(iterateVip.next())
 console.log(iterateVip.next())
+
+
+for(const l of 'abcdefg') {
+	console.log(l)
+}
+
+for(const l of [9, 2, 3, 4, 5]) {
+	console.log(l)
+}
+
+for(const el of new Set(['Kris', 'Lukas', 'Arnold'])) {
+	console.log(el)
+}
+
+for(const el of new Map([['Kris', 1], ['Lukas', 2], ['Arnold', 3]])) {
+	console.log(el)
+}
+
+const mySettings = {
+	name: 'OK',
+	adjust: 20,
+	settle: 30,
+	*[Symbol.iterator]() {
+		yield this.name
+		yield this.settle
+	}
+}
+
+const ref = mySettings[Symbol.iterator]();
+console.log(ref.next())
+console.log(ref.next())
+console.log(ref.next())
+
+// for(const el of mySettings) {
+// 	console.log(el);
+// }

@@ -28,6 +28,9 @@ const myTower = {
 	}
 }
 
+const myTower2 = {...myTower};
+const myTower3 = Object.assign({}, myTower);
+
 // Klonowanie obiektu na podstawie prototypu
 function makeBuilding(building: typeof myTower) {
 	return Object.create(building)
@@ -54,3 +57,13 @@ const lodashTower = cloneDeep(myTower);
 console.log(lodashTower.printParams())
 // potwierdzenie, że to dwa osobne obiekty:
 console.log(lodashTower === myTower);
+
+const user = {};
+
+class User {}
+
+const user2 = new User();
+
+console.log(user.constructor.name)
+console.log(user2 instanceof User)
+console.log(user2.constructor.name)
