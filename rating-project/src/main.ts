@@ -2,7 +2,7 @@ import { makeH3 } from './components/make-h3.js'
 import { titles } from "./data/titles.js";
 import { startsWithLowerCase } from "./utils/starts-wit-lower-case.js";
 import { Hero } from "./components/hero.component.js";
-import { RatingFormComponent } from "./components/rating-form.component.js";
+import { RatingFormComponent } from "./components/rate-form/rating-form.component.js";
 // to be continued... (add css).
 
 const $subtitle = document.querySelector('[data-subtitle]');
