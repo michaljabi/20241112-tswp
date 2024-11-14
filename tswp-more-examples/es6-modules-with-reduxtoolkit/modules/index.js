@@ -18,4 +18,4 @@ store.subscribe(() => {
 	$counter.innerHTML = selectCountValue(store.getState());
 })
 
-store.dispatch(incrementBy10())
+// store.dispatch(incrementBy10())
