@@ -3,7 +3,25 @@ import { titles } from "./data/titles.js";
 import { startsWithLowerCase } from "./utils/starts-wit-lower-case.js";
 import { Hero } from "./components/hero.component.js";
 import { RatingFormComponent } from "./components/rate-form/rating-form.component.js";
+import {store} from "./store";
+import {selectRate} from "./store/rateFormSlice";
 // to be continued... (add css).
+
+// import { store } from "./store"
+// import { setEmail, selectEmail } from "./store/rateFormSlice";
+//
+// console.log(selectEmail(store.getState()))
+//
+// // CONSUMER
+// const unsubscribe = store.subscribe(() => {
+//    console.log(selectEmail(store.getState()))
+// })
+//
+// // PROVIDER
+// store.dispatch(setEmail('michal@ok.pl'))
+// unsubscribe();
+// store.dispatch(setEmail('marzena@ok.pl'))
+
 
 const $subtitle = document.querySelector('[data-subtitle]');
 if($subtitle) {
@@ -45,3 +63,9 @@ const $dataColumn = document.querySelector('[data-column]');
 
 $dataColumn?.append(Hero({title: 'ACME inc.', subtitle: 'A Company that just Makes Everything...'}))
 $dataColumn?.append(Hero({title: 'xACME inc.', subtitle: '----'}))
+
+const subscription = () => {
+   document.title = `Rating Form (${selectRate(store.getState())})`;
+}
+store.subscribe(subscription)
+subscription();

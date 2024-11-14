@@ -17,15 +17,19 @@ import { configureStore } from '@reduxjs/toolkit'
 const increment = {type: 'INCREMENT_COUNTER'};
 const decrement = {type: 'DECREMENT_COUNTER'};
 
+const incrementBy = (by: number) => ({type: 'INCREMENT_BY', by})
+
 // Zrób akcje, która zwiększy o 10 counter i zaimplementuj
 // * Zaimplementuj akcje, która zwiększy o dowolną zadaną wartość counter
 
-function counterReducer(state = 0, action: {type: string}) {
+function counterReducer(state = 0, action: {type: string, by?: number}) {
     switch (action.type) {
         case 'INCREMENT_COUNTER':
             return state + 1;
         case 'DECREMENT_COUNTER':
             return state - 1;
+        case 'INCREMENT_BY':
+            return state + (action?.by || 0);
         default:
             return state;
     }
@@ -33,9 +37,19 @@ function counterReducer(state = 0, action: {type: string}) {
 
 const store = configureStore({
     reducer: {
-        counter: counterReducer
+        counter: counterReducer,
+        user: userReducer,
+        auth: authReducer,
     }
 });
+
+/*
+    {
+        counter: 21
+    }
+*
+*
+* */
 
 store.subscribe(() => {
     console.log(store.getState());

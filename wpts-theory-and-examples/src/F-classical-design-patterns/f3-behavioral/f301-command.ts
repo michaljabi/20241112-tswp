@@ -11,6 +11,16 @@
  *
  * */
 
+/*
+	[
+		{ "action": "add", "num1": 2, "num2": 3 },
+		{ "action": "add", "num1": 2, "num2": 3 },
+		{ "action": "add", "num1": 2, "num2": 3 },
+		{ "action": "add", "num1": 2, "num2": 3 },
+		{ "action": "add", "num1": 2, "num2": 3 },
+	]
+* */
+
 type Commands = keyof typeof calculator;
 
 const calculator = {
