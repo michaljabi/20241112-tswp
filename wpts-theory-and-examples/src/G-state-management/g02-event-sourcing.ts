@@ -51,5 +51,6 @@ console.log(getAccountsAtTime(0));
 console.log(getAccountsAtTime(1));
 console.log(getAccountsAtTime(2));
 console.log(getAccountsAtTime(3));
+// snapshot
 console.log(getAccountsAtTime(4));
 console.log(getAccountsAtTime(5));
